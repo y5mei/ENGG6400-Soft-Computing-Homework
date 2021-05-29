@@ -31,7 +31,7 @@
 \usepackage{multicol}
 \usepackage{cancel}
 \usepackage[retainorgcmds]{IEEEtrantools}
-\usepackage[margin=3cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{floatrow}
 \newlength{\tabcont}
 \setlength{\parindent}{0.0in}
@@ -49,7 +49,6 @@
 \lhead{\yourname\ \vspace{0.1cm} \\ \course}
 \chead{\textbf{\Large Homework-1}}
 \rhead{2021/05/28}
-
 
 \begin{document}
 \textbf{Question 1-1}.\textbf{Write the feedforward equations of h1, h2, h3 and y, as a function of the input
@@ -409,21 +408,20 @@ We can see from the plot below, no decision boundary shall across the \textcolor
     \item Any data points inside of the gray zone (open boundary) are \textbf{not} always classified the same way.
     \item Any data points inside of the white zone (close boundary) are always classified the same way
 \end{itemize}
-\begin{equation*}
+\begin{equation}
     \boxed{\rm{\quad Point\,7 \, and\, Point\,8\,may\,vary\,depending\,on\,the\,decision\,boundary\quad}}
 \end{equation}
-\begin{equation*}
+\begin{equation}
     \boxed{\rm{\quad Point\,5 \, and\, Point\,6\,can\,always\,be\,classified\,the\,same\,way\quad\quad\quad\quad\quad}}
 \end{equation}
 
 % I do not have a good mathematical proof, but my intuition tells me that the \textit{boundary of the decision boundary} could be determined by the following theorem:
 
 
-% \begin{theorem}[Yaowen's Last Theorem]
-% \label{pythagorean}
-% On a 2-D Plane, two non-intersecting \textbf{Convex polygon}, A and B, can always be separated by \textbf{exactly} two lines that are intersecting with both polygon A and polygon B. These two lines must passing from one vertex from polygon A and one vertex from polygon B, not touching any edges of any polygons. These two lines could uniquely determiner the \textbf{boundary of decision boundary} that will separate these two polygons on the 2-D plane. 
-% \end{theorem}
-
+\begin{theorem}[Sketch of Proof]
+On a 2-D plane, if two polygons(1-D for points, 2-D for lines, 3-D for triangles, ...etc) intersect with each other, then there shall not exist any line can totally separate these two polygons. 
+\end{theorem}
+P7 and P8 vary with D.B. can be proofed by Reductio ad absurdum.While, P5 and P6 does not vary with D.B. can be proofed by the following:1) put P5 on the Triangle Class, the the two thick orange line will intersect with each other, and make this problem become nonlinear spreadable. 2) If we assign P6 to the circle class, then the polygon of Class 1 will intersect with Class 2, which will make Class 1 and Class 2 linear non-separable
 
 \begin{center}
 \begin{tikzpicture}
@@ -477,5 +475,7 @@ We can see from the plot below, no decision boundary shall across the \textcolor
 \tikzset{
     circ/.style={circle, fill=black, inner sep=2pt, node contents={}}
 }
+
+
 
 \end{document}
