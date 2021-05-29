@@ -1,0 +1,159 @@
+1. ¿ Cómo se relacionan los renglones de $EA$ con los de $A$ en los siguientes casos? ( suponga que $A$ es una matriz cualesquiera)\\
+
+E=$\begin{pmatrix}
+ 1& 0& 0 \\
+ 0& 2& 0 \\ 
+ 4& 0& 1 
+\end{pmatrix}$\\
+\begin{itemize}
+\item La primera fila de EA y A son iguales 
+\item La segunda fila de EA es dos veces la segunda fila de A
+\item La tercera fila es EA es cuatro veces la primera fila de A más la tercera fila de A
+\end{itemize}
+E=$\begin{pmatrix}
+ 1& 1& 1 \\
+ 0& 0& 0 
+\end{pmatrix}$\\
+\begin{itemize}
+\item La componente n de la primera fila de EA es la suma de los componentes de la columna n de A
+\item La segunda fila es una fila de ceros 
+\end{itemize}
+E=$\begin{pmatrix}
+ 0& 0& 1 \\
+ 0& 1& 0 \\
+ 1& 0& 0
+\end{pmatrix}$\\
+\begin{itemize}
+\item La primera fila de A y la tercera fila de A se intercambian 
+\end{itemize}
+2. Determinar si la proposición es falsa o verdadera (justificar) $A,B$ son matrices cuadradas de orden n.\\
+\begin{itemize}
+\item det(A+B)= det(A) + det(B) (falsa)\\
+
+Contra ejemplo: \\
+Si A es igual a B, A es una matriz cuadrada de orden cuatro y el determinante de A es 4:\\
+det(A+B)= 64 y det(A)+det(B)=8 
+\item Si $A^{k} = 0_{nxn}$ para algún k entero positivo entonces A es singular (verdadera)\\
+Si $A^{k} = 0_{nxn}$, es decir es nilpotente, el determinante debe ser cero razón por la cual la matriz es singular
+\item Si det(A)=-2, entonces el sistema $AX=0$ tiene solo la solución trivial (verdadera)\\
+A es invertible por ser su determinante diferente de 0 por lo cual $X= A^{-1} 0$
+\item Si A es idempotente entonces det(A)=0 (falsa)
+La matriz identidad es idempotente y su determinante es 1
+\end{itemize}
+3. Tres vectores $\vec{u},\vec{v},\vec{w}$ de $\Re^{3}$ satisfacen que:\\
+
+$\left| \left| \vec{u} \right|\right |$=$\left | \left |\vec{w} \right |\right |$=5; $\left| \left| \vec{v} \right|\right |$ = 1; $\left| \left| \vec{u}-\vec{v}+\vec{w} \right|\right|=\left| \left| \vec{u}+\vec{v}+\vec{w} \right|\right|$\\
+
+Si el angulo que forman $\vec{u}$ y $\vec{v}$ es $\frac{\Pi}{8}$, hallar el que forman $\vec{v}$ y $\vec{w}$\\
+
+$\left(\vec{u}-\vec{v}+\vec{w}\right) \cdot \left(\vec{u}-\vec{v}+\vec{w}\right)$=$\left(\vec{u}+ \vec{v}+\vec{w}\right) \cdot \left(\vec{u}+\vec{v}+\vec{w}\right)$\\
+
+$\vec{u} \cdot \vec{u} + \vec{v} \cdot \vec{v} + \vec{w} \cdot \vec{w} - 2 \vec{u} \cdot \vec{v} + 2 \vec{u} \cdot \vec{w} - 2 \vec{v} \cdot \vec{w}=\vec{u} \cdot \vec{u} + \vec{v} \cdot \vec{v} + \vec{w} \cdot \vec{w} + 2 \vec{u} \cdot \vec{v} + 2 \vec{u} \cdot \vec{w} + 2 \vec{v} \cdot \vec{w}$\\
+
+$- 2 \vec{u} \cdot \vec{v} - 2 \vec{v} \cdot \vec{w}= 2 \vec{u} \cdot \vec{v} + 2 \vec{v} \cdot \vec{w}$\\
+
+$ - \vec{v} \cdot \vec{w}= \vec{u} \cdot \vec{v}$\\
+
+$cos(\theta)=\frac{\vec{v} \cdot \vec{w}}{\left| \left| \vec{v} \right|\right |\left| \left| \vec{w} \right|\right |}$\\
+
+$cos(\theta) =\frac {- \vec{u} \cdot \vec{v}}{5}$\\
+
+$\theta = -\frac{\Pi}{8}$\\
+
+4. Escriba una ecuación lineal de n variables , diga que representa:\\
+
+$a_{1}x_{1}+a_{2}x_{2}+a_{3}x_{3}+...+a{n}x_{n}=b$ \\
+
+Representa un plano en el espacio $\Re^{n}$\\
+
+5. Demuestre que el conjunto $\vec{B}$ es una base de $\vec{V}$ y encuentre el vector de coordenadas de $\vec{u}$ respecto a la base $\vec{B} (\left [ \vec{u} \right ]_{\vec{B}})$\\
+
+\begin{itemize}
+\item $\vec{B}= \left\lbrace\ (3,2,2), (-1,2,1),(0,1,0)\right\rbrace\ $, $\vec{V}= \Re^{3}$, $\vec{u}=(5,3,1)$\\
+
+$\begin{vmatrix}
+ 3& -1 & 0\\ 
+ 2& 2 & 1\\ 
+ 2& 1 & 0
+\end{vmatrix}$ = 5, por lo tanto si es base de $\Re^{3}$\\
+
+
+$(\left [ \vec{u} \right ]_{\vec{B}})=\frac{1}{5}\begin{pmatrix}
+1& 0 & 1\\ 
+-2& 0 & 3\\ 
+2& 5 & -8
+\end{pmatrix}$ $\begin{bmatrix}
+5\\ 
+3\\ 
+1
+\end{bmatrix}$ = $\frac{1}{5}\begin{bmatrix}
+6\\ 
+-7\\ 
+17
+\end{bmatrix}$
+\item $\vec{B}= \left\lbrace\ x^{2}+x; x-1;x+1\right\rbrace\ $, $\vec{V}= P_{2}$, $\vec{u}=3x^{2}-x+2$\\
+
+$\begin{vmatrix}
+ 1& 0 & 0\\ 
+ 1& 1 & 1\\ 
+ 0& -1 & 1
+\end{vmatrix}$ = 2, por lo tanto si es base de $P_{2}$\\
+
+
+$(\left [ \vec{u} \right ]_{\vec{B}})=\frac{1}{2}\begin{pmatrix}
+2& 0 & 0\\ 
+-1& 1 & -1\\ 
+-1& 1 & 1
+\end{pmatrix}$ $\begin{bmatrix}
+3\\ 
+-1\\ 
+2
+\end{bmatrix}$ = $\begin{bmatrix}
+3\\ 
+-3\\ 
+-1
+\end{bmatrix}$=$3x^{2}-3x-1$
+\item $\vec{B}= \left\lbrace\ \begin{bmatrix}
+ 1& 1\\ 
+ 0& 0
+\end{bmatrix},\begin{bmatrix}
+ 0& 0\\ 
+ 1& 1
+\end{bmatrix},\begin{bmatrix}
+ 1& 0\\ 
+ 0& 1
+\end{bmatrix},\begin{bmatrix}
+ 0& 1\\ 
+ 1& 1
+\end{bmatrix}\right\rbrace\ $
+
+$\begin{vmatrix}
+ 1& 1 & 0&0\\ 
+ 0& 0 & 1&1\\ 
+ 1& 0 & 1&0\\
+ 0& 1 & 1&1
+\end{vmatrix}$ = -1, por lo tanto si es base. 
+\end{itemize}
+
+6.Demostrar que si A y B son semejantes:\\
+
+\begin{itemize}
+\item det(A)=det(B)\\
+PA=BP\\
+det(PA)=det(BP)
+det(P)det(A)=det(B)det(P)
+det(A)=det(B)
+\item tr(PA)=tr(BP)\\
+tr(A)tr(P)=tr(P)tr(B)\\
+PA=PB
+\item A y B tienen el mismo polinomio característico\\
+det(P(A-$\lambda$I ))=det((B-$\lambda$I)P)\\
+det(A-$\lambda$I)=det(B-$\lambda$I)\\
+Como tienen el mismo polinomio característico tienen los mismos valores propios 
+\item $PA^{n}=B^{n}P$\\
+$det(PA^{n})=det(B^{n}P)$\\
+$det(A^{n})=det(B^{n})$
+\item $PA^{-1}=B^{-1}P$\\
+$AP^{-1}=P^{-1}B$\\
+$A=P^{-1}BP$
+\end{itemize}
