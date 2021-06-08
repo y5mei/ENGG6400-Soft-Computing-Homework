@@ -283,7 +283,7 @@ Use all 4 input points to test our model:
 \end{array}} \right]\left[ {\begin{array}{*{20}{c}}
 { - 1}\\
 1
-\end{array}} \right] -0.5} \right) = h.l.\left( { 1 + 1} \right) = 1 \qquad \text{\rlap{$\checkmark$}}\square\] 
+\end{array}} \right] -0.5} \right) = h.l.\left( { 1 -0.5} \right) = 1 \qquad \text{\rlap{$\checkmark$}}\square\] 
 
 \item Test for P2:
 \[{y_2} = h.l.\left( {\left[ {\begin{array}{*{20}{c}}
@@ -291,7 +291,7 @@ Use all 4 input points to test our model:
 \end{array}} \right]\left[ {\begin{array}{*{20}{c}}
 { - 1}\\
 { - 1}
-\end{array}} \right] -0.5} \right) = h.l.\left( {  1 + 1} \right) = 1\qquad \text{\rlap{$\checkmark$}}\square\] 
+\end{array}} \right] -0.5} \right) = h.l.\left( {  1 -0.5} \right) = 1\qquad \text{\rlap{$\checkmark$}}\square\] 
 
 
 \item Test for P3:
@@ -304,11 +304,11 @@ Use all 4 input points to test our model:
 
 \item Test for P4:
 \[{y_4} = h.l.\left( {\left[ {\begin{array}{*{20}{c}}
-1&0
+-1&0
 \end{array}} \right]\left[ {\begin{array}{*{20}{c}}
-0\\
+1\\
 0
-\end{array}} \right] - 0.5} \right) = h.l.\left( { 0 - 0.5} \right) = 0\qquad {\rlap{$\checkmark$}}\square\]
+\end{array}} \right] - 0.5} \right) = h.l.\left( { -1 - 0.5} \right) = 0\qquad {\rlap{$\checkmark$}}\square\]
 \end{enumerate}
 
 \textbf{Question-2-3: Classify the following input vectors with your solution. You can either perform
@@ -667,7 +667,7 @@ While, there exist at least one line that can separate these two polygon. means 
 There two sentence are conflicting with each other naturally.
 \end{proof}
 \begin{theorem}
-For a single-neuron preceptron system, with Point 1, Point 2, Point 3 and Point 4 as the training set, the classification of Point 5 and Point 6 can always be classified the same way. (Point 5 is in the same class with Point 1 and Point 2; while, Point 6 is always in the same class with Point 3, and Point 4)
+For a single-neuron preceptron system, with Point 1, Point 2, Point 3 and Point 4 as the training set (as stated in the first part of this question), the classification of Point 5 and Point 6 have to be always classified the same way. (Point 5 is in the same class with Point 1 and Point 2; while, Point 6 is always in the same class with Point 3, and Point 4)
 \end{theorem}
 
 \end{lemma}
