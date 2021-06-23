@@ -46,7 +46,7 @@
 \pagestyle{fancyplain}
 \headheight 32pt
 \lhead{\yourname\ \vspace{0.05cm} \\ \course}
-\chead{\textbf{\Large Homework-2}}
+\chead{\textbf{\Large Homework-3}}
 \rhead{2021/06/09}
 
 %% QED in black square
@@ -64,214 +64,91 @@
 \begin{document}
 % \include{homework1}
 % \include{homework2}
-\textbf{Question 1}: Give a discussion of the parameter sensitivity of the Neural Transmitter Model, by multiplying \textbf{Alfa} ($\alpha$), \textbf{Beta} ($\beta$), \textbf{Gama} ($\gamma$) and \textbf{I0} ($I_0$) with 10, 5, 2, 1, 0.5, 0.2 and 0.1, respectively. The default values are: Alfa=2; Beta=5; Gama=0.5; and I0=1. Then comment on the role of each parameter.
+% \include{homeworktest3}
 
-For a biological neuron network, let's define:
-\begin{table}[h]
-    \centering
-\begin{tabular}{c|c}
-        \toprule
-        \hline
-\textbf{Item} & \textbf{Meaning}\\ \hline
-I(t)          & Stimulus, \textbf{Input}\\
-Z(t)          & Avaliable Neural Transmitters inside of the Synapse, \textbf{Response}\\
-C(t)          &   Avaliable Neural Transmitters outside of the Synapse\\
-              & where  \ce{I(t) + Z(t) <=>[$\gamma$ (come out)][$\alpha$ (come in)] C(t)}\\
-$\alpha$      & Transmitter Depletion Rate (come in)\\
-$\gamma$      & Transmitter Replenishment Rate (come out)\\
-$\beta$       & $\beta$ = Z(t) + C(t) = Constant\\
-S(t)          & Output Signal = I(t)Z(t), \textbf{Output}\\ \hline
-\end{tabular}
-    \caption{Def. of parameters}
-    \label{tab:my_label}
-\end{table}
-\\
-Then, the neuron transmitter dynamics equation can be written as:
+\textbf{Question-1}: For a neural network for robot path planning, the neural dynamics of each
+neuron is described by an additive equation,
 \begin{equation}
-    \dot Z = \alpha \left( {\beta  - Z} \right) - \gamma IZ
+    \frac{{d{x_i}}}{{dt}} =  - A{x_i} + \sum\limits_{j = 1,j \ne i}^n {{w_{ij}}f\left( {{x_j}} \right) + {I_i} \label{eq1st}}
 \end{equation}
 
-(1) Play with the attached program in Matlab by multiplying parameters with 10, 5, 2, 1,
-0.5, 0.2 and 0.1, plot out the responses in ONE figure for each parameter, e.g., with 7
-different Alfa values and all other parameters in default values.
-\\
+where $w_{ij} = w_{ji}$; $f(a) = \max \left\{ {a,0} \right\}$ is a linear-above threshold function; and $I_i$ is the external
+input from the environment. Prove this neural network system is stable using the Lyapunov
+stability theory.
 
-\textbf{Solution 1-1}:
-Please see the Figure \ref{fig:my_label1} to Figure \ref{fig:my_label4}:
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.28]{picture/q1-1-1.png}
-    \caption{Plot for Question-1 Step-1, where $\beta = 5, \gamma = 0.5, I_0 = 1$}
-    \label{fig:my_label1}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.28]{picture/q1-1-2.png}
-    \caption{Plot for Question-1 Step-1, where $\alpha = 2, \gamma = 0.5, I_0 = 1$}
-    \label{fig:my_label2}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.28]{picture/q1-1-3.png}
-    \caption{Plot for Question-1 Step-1, where $\alpha = 2, \beta = 5, I_0 = 1$}
-    \label{fig:my_label3}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.28]{picture/q1-1-4.png}
-    \caption{Plot for Question-1 Step-1, where $\alpha = 2, \beta = 5, \gamma = 0.5$}
-    \label{fig:my_label4}
-\end{figure}
-
-
-% \begin{figure}
-%      \centering
-%      \begin{subfigure}[b]{0.4\textwidth}
-%          \centering
-%          \includegraphics[width=\textwidth]{picture/Figure_alpha.png}
-%          \caption{$\beta = 5, \gamma = 0.5, I_0 = 1$}
-%          \label{fig:y equals x}
-%      \end{subfigure}
-%      \begin{subfigure}[b]{0.4\textwidth}
-%          \centering
-%          \includegraphics[width=\textwidth]{picture/Figure_beta.png}
-%          \caption{$\alpha = 2, \gamma = 0.5, I_0 = 1$}
-%          \label{fig:three sin x}
-%      \end{subfigure}
-%      \begin{subfigure}[b]{0.4\textwidth}
-%          \centering
-%          \includegraphics[width=\textwidth]{picture/Figure_gamma.png}
-%          \caption{$\alpha = 2, \beta = 5, I_0 = 1$}
-%          \label{fig:five over x}
-%      \end{subfigure}
-%     \begin{subfigure}[b]{0.4\textwidth}
-%          \centering
-%          \includegraphics[width=\textwidth]{picture/Figure_I0.png}
-%          \caption{$\alpha = 2, \beta = 5, \gamma = 0.5$}
-%          \label{fig:five over x}
-%      \end{subfigure}
-%         \caption{The graphs for question 1-1}
-%         \label{fig:fourgraphsforq1}
-% \end{figure}
-
-
-\\
-(2) Similarly, find the relationship between the \textbf{overshoot} (calculate use the formula
-given in class, do not measure it from figure) and parameters, respectively. Plot
-figures of overshoot v.s. each parameter.
-
-\\
-\\
-\\
-\textbf{Solution 1-2}:
-The equation for overshoot, A, is given by Equation \ref{eq1-2}:
+\textbf{Solution-1}: Recall the Grossberg's general model's :
 \begin{equation}
-    A = \beta {I_0} + \beta {I_0}\frac{\alpha }{{\alpha  + \gamma {I_0}}} = \frac{{\gamma \beta I_0^2}}{{\alpha  + \gamma {I_0}}} \label{eq1-2}
+    \frac{{d{x_i}}}{{dt}} = {a_i}\left( {{x_i}} \right)\left[ {{b_i}\left( {{x_i}} \right) - \sum\limits_{j = 1,j \ne i}^n {{C_{ij}}d_j\left( {{x_j}} \right)} } \right] \label{eq1grossberg}
 \end{equation}
 
-We can easily see that the overshoot has a linear relationship with $\beta$ and $1/\alpha$, while has a non-linear relationship with  $\gamma$ and  $I_0$:
-
-\[\begin{array}{l}
-A \propto {\raise0.7ex\hbox{$1$} \!\mathord{\left/
- {\vphantom {1 \alpha }}\right.\kern-\nulldelimiterspace}
-\!\lower0.7ex\hbox{$\alpha $}}\\
-A \propto \beta \\
-A \propto \frac{C_1}{\frac{1}{\gamma}+C_2} \\
-A \propto \frac{1}{{\left( {\frac{{{C_3}}}{{I_0^2}}} \right) + \left( {\frac{{{C_4}}}{{{I_0}}}} \right)}}
-\end{array}\]
+Where: $a_i$ is the amplification function for neuron i; $b_i$ is the self-signal function for neuron i; $d_j$ is the other-signal function (activation function of other neuron j), $c_{ij}$ is the connection weight from neuron j to neuron i.
 \\
-\begin{figure}[h]
-     \centering
-     \begin{subfigure}[b]{0.4\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-2alpha.png}
-         \caption{$\beta = 5, \gamma = 0.5, I_0 = 1$}
-         \label{fig:y equals x}
-     \end{subfigure}
-     \begin{subfigure}[b]{0.4\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-2beta.png}
-         \caption{$\alpha = 2, \gamma = 0.5, I_0 = 1$}
-         \label{fig:three sin x}
-     \end{subfigure}
-     \begin{subfigure}[b]{0.4\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-2gama.png}
-         \caption{$\alpha = 2, \beta = 5, I_0 = 1$}
-         \label{fig:five over x}
-     \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-2I0.png}
-         \caption{$\alpha = 2, \beta = 5, \gamma = 0.5$}
-         \label{fig:five over x}
-     \end{subfigure}
-        \caption{The graphs for Question-1 Step-2}
-        \label{fig:fourgraphsforq2}
-\end{figure}
 \\
-(3) Similarly, find the relationship between the time constant and parameters, respectively. Plot figures of time constant v.s. each parameter.
-
-\textbf{Solution 1-3}: The equation of $\tau$ is given in Equation \ref{eq1s3}:
+Let's try to re-write the original additive equation in Grossberg's general model's format. Note that for all the equations below, we will assume the principal  diagonal elements in matrix $w$ and $C$ are all zero so that we can ignore the term $i \ne j$ from the summation.
 \begin{equation}
-    \tau = \frac{1}{\alpha+\gamma I}\label{eq1s3}
+    \frac{{d{x_i}}}{{dt}} = \left[ {\left( { - A{x_i} + {I_i}} \right) - \sum\limits_{j = 1}^n {\left( { - {w_{ij}}} \right)f\left( {{x_j}} \right)} } \right] 
+    \label{eq2rewrite}
+\end{equation}
+By comparing equation \ref{eq2rewrite} with equation \ref{eq1grossberg}, one can proof the additive equation's stability by showing  all the 3 stability criteria are satisfied accroding to Grossberg version's Lyapunov stability theorem:
+ \[{C_{ij}} = {-w_{ij}} \equiv {-w_{ji}} = {C_{ji}} \textrm{ \qquad  (Proof for symmetry)}\]
+ \[ {a_i}\left( {{x_i}} \right) = 1 > 0 \textrm{  \qquad    (Proof for positivity)}\]
+\[d_j(x_j) = f(x_j)=\max \left\{ a, 0\right\} \ge 0  \textrm{   \qquad    (Proof for monotonicity)}\qed\]
+\\\clearpage
+\textbf{Question #2} A neural network is characterized by an input-output equation,
+\begin{equation}
+    {y_i}\left( {t + 1} \right) = \phi \left( {\sum\limits_{j = 1}^n {{w_{ij}}{y_j}\left( t \right) + {\theta _i}} } \right)
+\end{equation}
+Where \textcolor{red} {$w_{ij} = w_{ji}$, and  $\phi (a) = ({1 + {e^{ - {a}}}})^{-1}$ is the sigmoid function}, $\theta_i$ is the threshold. (1) Use the function-summation exchange to transform this equation into an additive equation; (2) Prove the stability of this system.
+
+\textbf{Solution #2----Step-1:} transform this equation into an additive equation:
+\begin{equation}
+{{\dot y}_i} = \frac{{\Delta {y_i}}}{{\Delta t}} = \frac{{{y_i}\left( {t + 1} \right) - {y_i}\left( t \right)}}{1} =  - {y_i}\left( t \right) + \phi \left( {{x_i}} \right) \label{eq4dif}
+\end{equation}
+Where $a_i$ is defined as:
+\begin{equation}
+    {x_i} \equiv \sum\limits_{j = 1}^n {{w_{ij}}{y_j}\left( t \right) + {\theta _i}} \label{eq5dif}
 \end{equation}
 
-\\
-\begin{figure}[h]
-     \centering
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-3alpha.png}
-         \caption{\gamma = 0.5, I_0 = 1$}
-         \label{fig:y equals x}
-     \end{subfigure}
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-3gamma.png}
-         \caption{$\alpha = 2, I_0 = 1$}
-         \label{fig:three sin x}
-     \end{subfigure}
-     \begin{subfigure}[b]{0.3\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{picture/Figure_1-3I0.png}
-         \caption{$\alpha = 2, \gamma = 0.5$}
-         \label{fig:five over x}
-     \end{subfigure}
-        \caption{The graphs for Question-1 Step-3}
-        \label{fig:fourgraphsforq3}
-\end{figure}
+Multiply $\sum\limits_{i = 1}^n {{w_{ji}}}$ on each side of equation \ref{eq4dif}:
 
-\textbf{Comments on each parameter:}
-\\ The alpha is the come in rate
+\begin{equation}
+    \sum\limits_{i = 1}^n {{w_{ji}}} {{\dot y}_i} =  - \sum\limits_{i = 1}^n {{w_{ji}}} {y_i}\left( t \right) + \sum\limits_{i = 1}^n {{w_{ji}}} \phi \left( x_i \right) \label{eq6mul}
+\end{equation}
 
-\\
+From equation \ref{eq5dif}, the definition of $a_i$, one can write:
+\begin{equation}
+    {{\dot x}_i} = \frac{{d\left( {\sum\limits_{j = 1}^n {{w_{ij}}{y_j}\left( t \right)} } \right)}}{{dt}} = \sum\limits_{j = 1}^n {{w_{ij}}{{\dot y}_j}\left( t \right)} \label{difa}
+\end{equation}
+
+Put equation \ref{difa} and equation \ref{eq5dif} into equation \ref{eq6mul}:
+\begin{equation}
+    {{\dot x}_j} = {x_j} + {\theta _j} + \sum\limits_{i = 1}^n {{w_{ji}}} \phi \left( {{x_i}} \right)
+\end{equation}
+Finally, switch i and j, we can write equation in the additive equation format:
+\begin{equation}
+{{\dot x}_i} = {x_i} + \sum\limits_{j = 1}^n {{w_{ij}}} \phi \left( {{x_j}} \right) + {\theta _i} \label{question2setp1eq}
+\end{equation}
+
+
+
 \clearpage
-\pagebreak
-\textbf{Question 2}: Give a discussion of the parameter sensitivity of the \textbf{Shunting Model}, by multiplying\textbf{ A, B, D} with 10, 5, 2, 1, 0.5, 0.2 and 0.1, respectively. The positive and negative inputs are:
-\[S+ = I_{ex} \cdot u(t-t_{ex})\]
-\[S- = I_{in} \cdot u(t-t_{in})\]
-
-respectively, where constants $I_{ex} = I_{in} = 1$ are the amplitude of the inputs. Constants $t_{ex} = 0.2$ and $t_{in} = 0.8$ are the on-set time of the positive and negative inputs, respectively.
-Function $u(t-t_0)$ is the unit step function defined as:
-\[u(t- t_0) = 1, \quad \mathrm{if \quad} t>0\]
-\[u(t- t_0) = 0, \quad \mathrm{otherwise}\] The \textit{default} values are: A=10; B=1; D=1. 
-Then comment on the role of each parameter.
-\\
-\textbf{Steps}:
-\\
-(1) This question is similar to Question 1, except it has two inputs. By slightly modifying the program in the Appendix 1, you will get the results. The response of the shunting model with default parameter values is in Appendix 2.
-
-\\
-(2) In the Matlab program with default parameter value, the maximum time is set as 150*0.01=1.5. However, in some case, you may need a longer time to see the response to reach its steady state.
 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[scale=0.30]{picture/q2-1.png}
-    \caption{Plot for Question-2 Step-1&2}
-    \label{fig:my_label4}
-\end{figure}
+\textbf{Solution 2----Step-2:} Note that equation \ref{question2setp1eq} is identical with equation \ref{eq1st} in Question 1, except for:
+\[A=-1\]
+\[I_i = \theta_i\]
+\[f(x_j) \textrm{ is replaced by } \phi(x_j)\] 
 
+Equation \ref{question2setp1eq} can be re-write as:
+\begin{equation}
+    \frac{{d{x_i}}}{{dt}} = \left[ {\left( { {x_i} + {\theta} \right) - \sum\limits_{j = 1}^n {\left( { - {w_{ij}}} \right)\phi\left( {{x_j}} \right)} } \right] 
+    \label{question2eq2rewrite}
+\end{equation}
+Comparing equation \ref{question2eq2rewrite} with equation \ref{eq1grossberg},
+one can proof the additive equation's stability by showing  all the 3 stability criteria are satisfied according to Grossberg version's Lyapunov stability theorem:
+ \[{C_{ij}} = {-w_{ij}} \equiv {-w_{ji}} = {C_{ji}} \textrm{ \qquad  (Proof for symmetry)}\]
+ \[ {a_i}\left( {{x_i}} \right) = 1 > 0 \textrm{  \qquad    (Proof for positivity)}\]
+\[{d_j}({x_j}) = \phi ({x_j}) = {\raise0.7ex\hbox{$1$} \!\mathord{\left/
+ {\vphantom {1 {1 + {e^{ - {x_j}}}}}}\right.\kern-\nulldelimiterspace}
+\!\lower0.7ex\hbox{${1 + {e^{ - {x_j}}}}$}} \ge 0  \textrm{   \qquad    (Proof for monotonicity)}\qed\]
 \end{document}
